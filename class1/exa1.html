@@ -1,0 +1,64 @@
+
+<html>
+<head>
+
+<script type="text/javascript">
+function a(cb){
+	console.log("ori");
+	setTimeout(cb, 1000);
+	
+	this.pepe = "hola";
+}
+
+function b(cb){
+	setTimeout(cb, 500);
+}
+
+
+function c(cb){
+	setTimeout(cb, 800);
+}
+
+console.log("init...");
+
+function factory(fncs){
+
+	fncs.forEach((f)=>{
+		
+		window[f.name] = function(){
+			console.log("contructor", f.pepe || null);
+			return new Promise( (resolve, reject)=>{
+				f(resolve);
+			});
+		};
+	});
+}
+//factory([a, b, c]);
+//a();
+a.prototype.hi = "asdasd";
+var mya = new a();
+
+/*a()
+.then( ()=>{
+	console.log("termino A");
+	return b();
+})
+.then( ()=>{
+	console.log("Termino B");
+	return c();
+})
+.then( ()=>{
+	console.log("Termino C");
+})
+.catch( (e)=>{
+	console.log("Catch: ", e);
+})
+
+*/
+
+
+</script>
+</head>
+<body>
+</body>
+</html>
