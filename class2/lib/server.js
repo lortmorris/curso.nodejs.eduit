@@ -1,9 +1,9 @@
 const fs = require("fs");
-
 const publicDirectory = process.cwd()+"/public";
 
-function server(req, res){
+var dinamicRoutes={};
 
+function Request(req, res){
 	this.req = req;
 	this.res = res;
  	console.log(req.url);
@@ -13,11 +13,8 @@ function server(req, res){
   		this.notFound();
   	}
   }
-
 }
-
-
-server.prototype.staticFile = function(){
+Request.prototype.staticFile = function(){
 	console.log("is static?");
 	var _this = this;
 	let file="";
@@ -32,13 +29,26 @@ server.prototype.staticFile = function(){
  
 }
 
-server.prototype.dinamicFile = function(){
+Request.prototype.dinamicFile = function(){
 	console.log("is dinamic?");
 	return null;
 }
 
-server.prototype.notFound = function(){
+Request.prototype.notFound = function(){
 	console.log("404");
 	this.res.end(fs.readFileSync(publicDirectory+"/404.html"));
+}
+
+function server(){
+
+	console.log("new server");
+	this.Request = function(req, res){
+		console.log("new request");
+		new Request(req, res);
+	}
+}
+
+server.prototype.get = function(path, cb){
+	dinamicRoutes[path]=cb;
 }
 module.exports = server;
