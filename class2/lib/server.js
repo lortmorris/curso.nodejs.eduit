@@ -30,8 +30,12 @@ Request.prototype.staticFile = function(){
 }
 
 Request.prototype.dinamicFile = function(){
+	var _this = this;
 	console.log("is dinamic?");
-	return null;
+
+	if(typeof dinamicRoutes[_this.req.url]!="undefined"){
+		return dinamicRoutes[_this.req.url](_this.req, _this.res)
+	}else return null; //lortmorris
 }
 
 Request.prototype.notFound = function(){
