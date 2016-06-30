@@ -1,0 +1,15 @@
+{
+  "name": "class3",
+  "version": "1.0.0",
+  "description": "clase 3",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "cesar casas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0",
+    "mongojs": "^2.4.0"
+  }
+}
