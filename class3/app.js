@@ -23,33 +23,46 @@ function mymws (req, res, next){
 app.use(mymws);
 app.use(express.static("./public"));
 
-
-
 app.get("/", (req, res)=>{	
-	db.test.find({},{}, (err, docs)=>{
+
+	let id  =  req.query.id ? req.query.id: null;
+	let q = id ? {_id: db.ObjectId(req.query.id)} : {};
+
+	db.test.find(q,{}, (err, docs)=>{
 		if(err){
 			console.log("err ", err);
 		}else{
-
-			res.render("index", {persons: docs, date: new Date()});
+			let edit = id ? docs[0] : {};
+			res.render("index", {persons: docs, id: id, act: (id ? "/update" : "/save"), edit:edit});
 		}
 	});
 
-	
 });
 
+function toSave(req, res){
 
-app.post("/save", (req, res)=>{
+	let id = req.body.id ? req.body.id : null;
+
 	let toSave = {
-		name: req.body.name || "noname",
-		age: req.body.age || 0,
-		dni: req.body.dni || "nodni",
-	};
+			name: req.body.name || "noname",
+			age: req.body.age || 0,
+			dni: req.body.dni || "nodni",
+		};
 
-	db.test.save(toSave, (err, doc)=>{
-		res.redirect("/");
-	});
-})
+	if(id && id!=""){
+		db.test.update({_id: db.ObjectId(id)},{$set: toSave}, (err, doc)=>{
+			res.redirect("/");
+		});	
+	}else{
+		db.test.save(toSave, (err, doc)=>{
+			res.redirect("/");
+		});
+	}
+	
+}
+
+app.post("/save", toSave);
+app.post("/update", toSave);
 
 
 
