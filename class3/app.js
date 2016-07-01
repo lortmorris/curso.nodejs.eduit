@@ -5,8 +5,15 @@ const app = express();
 const mongojs = require('mongojs');
 const bodyParser = require("body-parser");
 const db = mongojs("test", ["films", "users", "test"]);
+const exphbs  = require('express-handlebars');
+
 
 app.use(bodyParser.urlencoded({ extended: false }))
+
+app.engine('.hbs', exphbs({defaultLayout: 'main', extname: '.hbs'}));
+app.set('view engine', 'hbs');
+
+
 
 function mymws (req, res, next){
 	res.set("auth" , "cesar");	
@@ -16,20 +23,19 @@ function mymws (req, res, next){
 app.use(mymws);
 app.use(express.static("./public"));
 
-app.get("/person", (req, res, next)=>{
+
+
+app.get("/", (req, res)=>{	
 	db.test.find({},{}, (err, docs)=>{
 		if(err){
 			console.log("err ", err);
 		}else{
-			res.json(docs);
+
+			res.render("index", {persons: docs, date: new Date()});
 		}
 	});
-});
 
-
-app.get("/", (req, res)=>{
-	console.log("alguien llego> ", req.ip);
-	res.end("gracias x su visita");
+	
 });
 
 
