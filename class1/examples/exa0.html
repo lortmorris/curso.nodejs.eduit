@@ -1,0 +1,41 @@
+<html>
+<head>
+    <script type="text/javascript">
+        var run = function(){
+            for(let i=0; i<arguments.length; i++){
+                let e = arguments[i];
+                typeof e=="function" ? e():null;
+            }
+        }
+
+        run(2,true, false, "nola", ()=>{
+            console.log("hola")
+        }, 5, ()=>{
+            console.log("chau")
+        });
+
+        var x2 =(a)=> a.forEach((v)=>{ console.log(v*2);})
+        x2([1,2,3,4,5,6,7,8,9]);
+
+
+
+        const f = (a)=> a.map((v)=> v*14.98);
+        var prices = [12.6, 55, 98];
+        f(prices);
+        console.log(prices);
+
+
+        var elements = [1,2,3,4,5];
+        const add = (a, e)=>[...a.concat(e)]
+        add(elements, 6);
+
+        [1,2,3,4,5,6].reduce((prev, current)=>{ console.log(prev, current); return prev+current; }, 100)
+
+        
+
+    </script>
+</head>
+<body>
+<h1>Curso de node.js, js:array</h1>
+</body>
+</html>
