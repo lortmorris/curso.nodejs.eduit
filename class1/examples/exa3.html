@@ -2,13 +2,51 @@
 <head>
 
     <script type="text/javascript">
-        function a(cb) {
-            console.log("ori");
-            setTimeout(cb, 1000);
 
-            this.pepe = "hola";
+        function connectDB(){
+            return new Promise((resolve, reject)=>{
+                setTimeout(resolve, 1000);
+            });
         }
 
+
+        
+
+        function query(){
+            return new Promise((resolve, reject)=>{
+                setTimeout(resolve, 1000);
+            })
+        }
+        function render(){
+            return new Promise((resolve, reject)=>{
+                asd();
+                setTimeout(resolve, 1000);
+            })
+        }
+
+
+        connectDB()
+                .then(()=>{
+                        console.log("conectado");
+                        return query();
+                    })
+                .then(()=>{
+                    console.log("query terminada");
+                    return render();
+                })
+                .then(()=>{
+                    console.log(" son tus datos");
+                }, (err)=>{
+                    console.log("algo salio mal ", err);
+                })
+        .catch((e)=>{
+            console.log("algo se rompio: ", e);
+        })
+
+
+
+
+        /*
         function b(cb) {
             setTimeout(cb, 500);
         }
@@ -37,6 +75,7 @@
         a.prototype.hi = "asdasd";
         var mya = new a();
 
+*/
         /*a()
          .then( ()=>{
          console.log("termino A");
