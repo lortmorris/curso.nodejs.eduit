@@ -1,0 +1,39 @@
+<html>
+<head>
+    <title>Curso de Node.js</title>
+    <script type="text/javascript">
+        var a = ["banana"
+            , "pera"
+            , "manzana"
+            , "pera"
+            , "ajo"
+            , "tomate"
+            , "banana"
+            , "uvas"];
+
+        var aux = {};
+        var total = null;
+
+        for (var x = 0; x < a.length; x++) {
+            if (typeof aux[a[x]] == "undefined") {
+                aux[a[x]] = {k: a[x], v: 1};
+            }//end if
+            else {
+                aux[a[x]].v++;
+            }
+
+
+            total = total == null ? aux[a[x]]
+                    : (total.v < aux[a[x]].v ? aux[a[x]] : total);
+        }//end for
+
+        console.log(total);
+
+    </script>
+</head>
+<body>
+<h1>Curso de Node.js</h1>
+
+<p>Example: contar palabras.</p>
+</body>
+</html>
