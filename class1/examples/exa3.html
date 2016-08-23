@@ -3,21 +3,32 @@
 
     <script type="text/javascript">
 
-        function connectDB(){
-            return new Promise((resolve, reject)=>{
-                setTimeout(resolve, 1000);
+
+
+
+
+
+        function connectDB(cb){
+
+            return new Promise( (resolve, reject)=>{
+
+                setTimeout(()=>{
+                    resolve([1,2,3,4,5]);
+                }, 1000);
+
             });
         }
 
 
-        
-
-        function query(){
+        function query(cb){
             return new Promise((resolve, reject)=>{
                 setTimeout(resolve, 1000);
             })
         }
-        function render(){
+
+
+        function render(cb){
+            setTimeout(cb, 1000);
             return new Promise((resolve, reject)=>{
                 asd();
                 setTimeout(resolve, 1000);
@@ -25,9 +36,12 @@
         }
 
 
+
+
+
         connectDB()
-                .then(()=>{
-                        console.log("conectado");
+                .then((connection)=>{
+                        console.log("conectado ", connection);
                         return query();
                     })
                 .then(()=>{

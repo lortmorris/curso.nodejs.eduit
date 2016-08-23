@@ -1,0 +1,13 @@
+<h1>Curso de Node.js</h1>
+
+<ul>
+{{#each data}}
+    <li>{{this.name}} - {{this.email}} <span onclick="remove('{{this._id}}')">Delete</span> </li>
+{{/each}}
+</ul>
+
+
+    <input type="text" id="name" value="" placeholder="Name..."/>
+    <input type="email" id="email" value="" placeholder="Your email"/>
+    <input type="submit" value="Add" onclick="add()"/>
+

@@ -1,0 +1,21 @@
+{
+  "name": "class2",
+  "version": "1.0.0",
+  "description": "class 2",
+  "main": "server2.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "mocha",
+    "start": "node server.js"
+  },
+  "author": "Cesar Casas <cesarcasas@bsdsolutions.com.ar> (https://ar.linkedin.com/in/cesarcasas)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "mongojs": "^2.4.0"
+  }
+}

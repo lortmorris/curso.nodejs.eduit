@@ -1,0 +1,40 @@
+<html>
+<head>
+    <script   src="https://code.jquery.com/jquery-3.1.0.min.js"   integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s="   crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+
+        function request(end, data){
+            $.ajax({
+                type: "POST",
+                url: end,
+                data: data,
+                success: function(){
+                    console.log("todo grabado");
+                    //window.location.reload();
+                },
+                dataType: "json"
+            });
+        }
+
+        function add() {
+            var data  = {
+                name: $("#name")[0].value,
+                email: $("#email")[0].value
+            };
+            request("/add", data);
+
+        }
+
+        function remove(id){
+            request("/remove", {id:id});
+        }
+
+    </script>
+    <title>Curso de node</title>
+</head>
+<body>
+
+{{{body}}}
+</body>
+</html>
