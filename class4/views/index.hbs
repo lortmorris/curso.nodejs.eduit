@@ -1,0 +1,13 @@
+<h1>Chat example</h1>
+
+<div>
+<ul id="messagesPanel">
+{{#each messages}}
+    <li>{{this.added}} : {{this.msg}}</li>
+{{/each}}
+</ul>
+</div>
+<div>
+    <input type="text" placeholder="msg..." id="msg"/>
+    <input type="button" value="send" id="btn" />
+</div>
