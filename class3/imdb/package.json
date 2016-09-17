@@ -1,0 +1,14 @@
+{
+  "name": "imdb",
+  "version": "1.0.0",
+  "description": "example how to use imdb api",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "cesar casas",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
+}
