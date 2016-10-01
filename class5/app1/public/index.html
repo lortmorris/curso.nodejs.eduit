@@ -11,6 +11,7 @@
       #messages { list-style-type: none; margin: 0; padding: 0; }
       #messages li { padding: 5px 10px; }
       #messages li:nth-child(odd) { background: #eee; }
+      .icon {width: 16px; height: 16px}
     </style>
     <script src="/socket.io/socket.io.js"></script>
   
@@ -34,7 +35,7 @@
       });
 
        socket.on('message', function(msg){
-        $('#messages').append($('<li>').text(msg));
+        $('#messages').append($('<li>').html(msg));
       });
 
     </script>
