@@ -1,0 +1,14 @@
+<h2>Dejá tu firma</h2>
+
+<form method="post" action="/">
+	Nombre: <input type="text" name="name" placeholder="inserte su nombre" />
+
+	Mensaje: <input type="text" name="msg" placeholder="" />
+
+	<input type="submit" value="Add+" />
+</form>
+
+
+{{#each signatures}}
+	{{this.name}}: {{this.msg}} <br />
+{{/each}}
