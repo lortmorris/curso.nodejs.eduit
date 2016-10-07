@@ -1,14 +1,19 @@
-<h2>Dejá tu firma</h2>
+<h2>Dejá tu website</h2>
 
 <form method="post" action="/">
-	Nombre: <input type="text" name="name" placeholder="inserte su nombre" />
+	Nombre: <input type="text" name="url" placeholder="inserte su url" />
 
-	Mensaje: <input type="text" name="msg" placeholder="" />
-
+	Nombre: <input type="text" name="name" placeholder="" />
 	<input type="submit" value="Add+" />
 </form>
 
 
-{{#each signatures}}
-	{{this.name}}: {{this.msg}} <br />
-{{/each}}
+<ul class="sites">
+	{{#each sites}}
+	<li>
+		<span>{{this.url}}</span>
+		<img src="/mytest/{{this.filename}}" />
+		<span>{{this.name}}</span>
+	</li>		
+	{{/each}}
+</ul>
