@@ -1,4 +1,5 @@
 const express = require('express');
+const http = require('http');
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongojs = require('mongojs');
@@ -7,6 +8,15 @@ const app = express();
 const screenshot = require('./lib/screenshot');
 const Sites = require('./lib/site')(db);
 const sites = new Sites();
+const server=http.createServer(app);
+const io = require('socket.io')(server);
+
+io.on('connection', (socket)=>{
+  console.log('a user connected');
+  socket.on('disconnect', ()=>{
+    console.log('user disconnected');
+  });
+});
 
 app.engine('.hbs', exphbs({
 	defaultLayout: 'default',
@@ -22,11 +32,14 @@ app.post('/', (req, res)=>{
 
 	screenshot(req.body.url)
 	.then((filename)=>{
-		return sites.add({
+		let data={
 			url: req.body.url,
 			name: req.body.name,
 			filename: filename.split('/').pop()
-		});
+		};
+
+		io.emit('newsite', data);
+		return sites.add(data);
 	})
 	.then(()=> res.redirect("/"))
 	.catch((err)=> {
@@ -47,4 +60,5 @@ app.get('/',  (req, res)=> {
     
 });
 
-app.listen(3000);
+
+server.listen(3000);
