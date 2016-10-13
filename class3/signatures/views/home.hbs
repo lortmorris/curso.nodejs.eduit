@@ -1,0 +1,12 @@
+<h1>Soy el home</h1>
+
+<p>{{now}}</p>
+
+<ul>
+{{#each signatures}}
+    <li>
+        <strong>{{this.name}}</strong> - {{this.email}}
+        <p>{{{this.message}}}</p>
+    </li>
+{{/each}}
+</ul>

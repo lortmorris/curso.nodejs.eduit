@@ -23,7 +23,7 @@ const addRouter = (method, path, cb)=>{
 }
 
 const isDina = (req, res)=>{
-    console.log(req.method, req.url);
+    //console.log(req.method, req.url);
 
     if(Routers[req.method][req.url]){
         Routers[req.method][req.url](req, res);
@@ -31,7 +31,7 @@ const isDina = (req, res)=>{
 }
 
 addRouter("GET", "/counter", (req, res)=>{
-    console.log("es counter");
+ //   console.log("es counter");
     res.end("Total: "+counter++);
 });
 
