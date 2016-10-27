@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+<head>
+    <title>Socket.IO chat</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font: 13px Helvetica, Arial; }
+        form { background: #000; padding: 3px; position: fixed; bottom: 0; width: 100%; }
+        form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
+        form button { width: 9%; background: rgb(130, 224, 255); border: none; padding: 10px; }
+
+        #msgContainer {width: 70%; float: left; overflow: auto; height: 500px;}
+        #messages { list-style-type: none; margin: 0; padding: 0; border: 1px solid #bbb; width: 100%}
+        #messages li { padding: 5px 10px; }
+        #messages li:nth-child(odd) { background: #eee; }
+
+        #users { list-style-type: none; margin: 0; padding: 0; border: 1px solid #bbb; width: 20%; float: left}
+        #users li { padding: 5px 10px; }
+        #users li:nth-child(odd) { background: #eee; }
+
+        .me {color:  #ff0000;}
+
+    </style>
+
+
+
+</head>
+<body>
+<div id="msgContainer">
+    <ul id="messages"></ul>
+</div>
+
+<ul id="users"></ul>
+<form action="" id="form">
+    <input id="m" autocomplete="off" /><button>Send</button>
+</form>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="http://code.jquery.com/jquery-1.11.1.js"></script>
+<script>
+    var socket = io();
+
+    var lastId = null;
+
+    $('#form').submit(function(e){
+        e.preventDefault();
+        socket.emit('chat message', $('#m').val());
+        $('#m').val('');
+    });
+
+
+    function appendMsg(msg){
+        var el = '<li title="'+msg.datetime+' '+msg._id+' "><strong>'+msg.who+':</strong>'+msg.msg+'</li>';
+        $('#messages').append($(el));
+    };
+
+    socket.on('last messages', function(messages){
+        messages.forEach(function(msg){
+            appendMsg(msg);
+        });
+    });
+
+    socket.on('msg', function(msg){
+        appendMsg(msg);
+        lastId = msg._id;
+    });
+
+    socket.on('user list', function(users){
+        $('#users').innerHTML = "";
+        users.forEach( function(user){
+            var el = '<li class="'+(user==socket.id ? 'me' : 'other')+'">'+user+'</li>';
+            $('#users').append(el);
+        });
+    });
+
+
+</script>
+
+
+</body>
+</html>
