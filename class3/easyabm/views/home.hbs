@@ -1,0 +1,19 @@
+<h1>Curso de node</h1>
+<h3>{{hoy}}</h3>
+<form action="/save" method="post">
+	<p><input type="text" name="action" placeholder="Action..." /></p>
+
+	<p><input type="text" name="user" placeholder="User..." /></p>
+
+	<p><input type="number" name="points" min="1" /></p>
+
+	<p><input type="submit" value="Add..." /></p>
+
+</form>
+
+<ul>
+	{{#each data}} 
+	<li> {{this.action}} - {{this.user}} ({{this.points}})
+		<a href="/delete?i={{this.i}}">[X]</a>
+	</li>{{/each}}
+</ul>
