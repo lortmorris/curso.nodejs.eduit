@@ -1,0 +1,83 @@
+<html>
+
+<head>
+  <script type='text/javascript'>
+
+  let vendors = [
+    {fname: 'Mariano',lname: 'Martinez',_id: 'ffffffff9291'},
+    {fname: 'Cacho',lname: 'Castaña',_id: 'ffffffff9292'},
+    {fname: 'Tato',lname: 'Perez',_id: 'ffffffff9293'},
+    {fname: 'Adolfo',lname: 'Alsina',_id: 'ffffffff9294'},
+    {fname: 'Ramon',lname: 'Valdes',_id: 'ffffffff9295'},
+    {fname: 'Pepe',lname: 'Luis',_id: 'ffffffff9296'},
+  ];
+
+  let currencies = {
+    'mx': 20,
+    'ar': 16.26
+  };
+
+  //mock
+  const getRandomSales = n=>{
+    let sales = [];
+
+    let getRandomProducts = x=>{
+      let products = [];
+      for(let i=0; i<x; i++){
+        let cant = Math.floor(Math.random()*5)+1;
+        let price = Math.random() * 100;
+        let total  = cant * price;
+        products.push({
+          _id: 'asjdaoisda8s9dhasd',
+          cant: cant,
+          price: price,
+          total: total
+        });
+      }
+      return products;
+    };
+
+    for(let x=0; x<n; x++){
+      sales.push({
+        date: new Date(),
+        products: getRandomProducts(Math.floor(Math.random()*10)+1),
+        vendor:  vendors[Math.floor(Math.random()*vendors.length)],
+      });
+
+    }
+    return sales;
+  };
+
+
+  let updateCurrencies = sales=> sales.map( sale=>{
+    sale.products.map(product=>{
+      product.priceMX = currencies.mx * product.price;
+      product.priceAR = currencies.ar * product.price;
+      return product;
+    });
+    return sale;
+  })
+
+
+  let sales = getRandomSales(50);
+
+  vendors.map( vendor => {
+    vendor.sales = sales.filter( sale=> sale.vendor._id ==  vendor._id);
+    vendor.amount = 0;
+    
+    vendor.sales.forEach( sale=>{
+      vendor.amount+=sale.products.reduce( (amount, product)=> product.total, 0);
+    });
+
+    vendor.sales = vendor.sales.length;
+    return vendor;
+  });
+
+
+
+  </script>
+</head>
+<body>
+
+</body>
+</html>
