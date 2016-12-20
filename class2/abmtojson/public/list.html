@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Central de alumnos</title>
+  </head>
+  <body>
+
+<a href="/form.html">Add+</a>
+<form method="get" action="/filter">
+  Promedio: <input type="text" name="prom" />
+  <input type="submit" value="filter" />
+</form>
+
+    <table>
+      <tr>
+        <th>CURP</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DOB</th>
+        <th>Promedio</th>
+        <th>Added</th>
+        <th>Actions</th>
+      </tr>
+      {{data}}
+    </table>
+  </body>
+</html>
