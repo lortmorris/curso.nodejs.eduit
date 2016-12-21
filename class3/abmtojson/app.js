@@ -38,6 +38,13 @@ let showHome = (DB, req, res)=>{
 app.get('/counter', (req, res)=> res.end('counter: '+counter++));
 app.get('/datetime', (req, res)=> res.end(new Date().toString));
 app.get('/', (req, res)=> showHome(alumnos, req, res));
+app.get('/alumno/:curp', (req, res)=>{
+  let alumno = alumnos.filter(a=> a.curp == req.params.curp);
+  if(alumno.length==0) return res.redirect('/');
+
+  res.render('profile', {alumno:  alumno[0]});
+  
+})
 app.get('/add', (req, res)=>{
   res.render('add');
 });
