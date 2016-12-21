@@ -7,12 +7,9 @@ const app = express();
 const server = http.createServer(app);
 const fs = require('fs');
 const db = mongojs('mongodb://localhost/mexico', ['alumnos']);
-
+let counter = 0;
 app.engine('.hbs', exphbs({extname: '.hbs', defaultLayout: 'default'}) );
 app.set('view engine', '.hbs');
-
-let counter = 0;
-
 
 app.use( express.static('./public') );
 app.use(bodyParser.urlencoded({ extended: false }));
