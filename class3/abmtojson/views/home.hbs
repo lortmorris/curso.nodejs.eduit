@@ -1,0 +1,28 @@
+
+<form method="get" action="/filter">
+  Promedio: <input type="text" name="prom" />
+  <input type="submit" value="filter" />
+</form>
+
+    <table>
+      <tr>
+        <th>CURP</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DOB</th>
+        <th>Promedio</th>
+        <th>Added</th>
+        <th>Actions</th>
+      </tr>
+      {{#each alumnos}}
+      <tr>
+        <td>{{this.curp}}</td>
+        <td>{{this.fname}}</td>
+        <td>{{this.lname}}</td>
+        <td>{{this.dob}}</td>
+        <td>{{this.prom}}</td>
+        <td>{{this.added}}</td>
+        <td><a href="/delete?curp={{this.curp}}">Delete</a></td>
+      </tr>
+      {{/each}}
+    </table>
