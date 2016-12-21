@@ -2,9 +2,11 @@ const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const exphbs  = require('express-handlebars');
+const mongojs = require('mongojs');
 const app = express();
 const server = http.createServer(app);
 const fs = require('fs');
+const db = mongojs('mongodb://localhost/mexico', ['alumnos']);
 
 app.engine('.hbs', exphbs({extname: '.hbs', defaultLayout: 'default'}) );
 app.set('view engine', '.hbs');
@@ -23,12 +25,6 @@ fs.readFile('./'+dbfile, (err, data)=>{
 });
 
 
-let saveDB = (data)=>{
-  fs.writeFile('./'+dbfile, JSON.stringify(data), (err)=>{
-      //do something
-  });
-}
-
 let showHome = (DB, req, res)=>{
   let table= '';
   res.render('home', {alumnos: DB});
@@ -43,7 +39,7 @@ app.get('/alumno/:curp', (req, res)=>{
   if(alumno.length==0) return res.redirect('/');
 
   res.render('profile', {alumno:  alumno[0]});
-  
+
 })
 app.get('/add', (req, res)=>{
   res.render('add');
@@ -51,8 +47,11 @@ app.get('/add', (req, res)=>{
 
 app.post('/save', (req, res)=>{
   req.query.added = new Date();
-  alumnos.push(req.body);
-  saveDB(alumnos);
+
+  db.alumnos.insert(req.body, (err, doc)=>{
+    if(err) console.log(err);
+    else console.log(doc);
+  });
   showHome(alumnos, req, res);
 });
 
