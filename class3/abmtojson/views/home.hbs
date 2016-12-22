@@ -22,7 +22,10 @@
         <td>{{this.dob}}</td>
         <td>{{this.prom}}</td>
         <td>{{this.added}}</td>
-        <td><a href="/delete?_id={{this._id}}">Delete</a></td>
+        <td>
+          <a href="/edit/{{this._id}}">Edit</a>
+          <a href="/delete?_id={{this._id}}">Delete</a>
+        </td>
       </tr>
       {{/each}}
     </table>
