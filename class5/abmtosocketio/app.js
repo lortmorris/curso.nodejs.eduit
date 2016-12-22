@@ -19,16 +19,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/', (req, res)=> {
   let filterNotes = [];
   let query = {};
-
-  if(req.query.filterNote) query.prom = req.query.filterNote;
-
-  db.alumnos.distinct('prom', {}, (err, proms)=>{
-    db.alumnos.find(query, {}, (err, docs)=>{
-      res.render('home', {alumnos: docs,
-        filterNotes: proms
-      });
-    });
-  });//end distinct
+  res.render('home');
 });
 
 app.get('/alumno/:curp', (req, res)=>{
@@ -42,24 +33,43 @@ app.get('/add', (req, res)=>{
   btnlabel: 'Add+'});
 });
 
-app.post('/save', (req, res)=>{
-  req.query.added = new Date();
-  db.alumnos.insert(req.body, (err, doc)=>{
-    res.redirect('/');
-  });
-});
+
 
 
 io.on('connection', (socket)=>{
   socket.on('disconnect', ()=>{
     console.log('user disconnected: ', socket.id);
   });
-  
+
   socket.on('delete', (id)=>{
     db.alumnos.remove({_id: db.ObjectId(id)}, (err, doc)=>{
       socket.emit('show nofication', 'Delete ok');
     });
   });
+
+  socket.on('add', (params)=>{
+    params.added = new Date();
+    db.alumnos.insert(params, (err, doc)=>{
+      socket.emit('show notification', 'Alumno agregado correctamente');
+    });
+  });
+
+  socket.on('update', (params)=>{
+    let _id = params._id;
+    delete params._id;
+    db.alumnos.update({_id: db.ObjectId(_id)}, {$set:params}, (err, doc)=>{
+      socket.emit('show notification', 'Alumno actualizado');
+    });
+  });
+
+
+  socket.on('update list', ()=>{
+    let query={};
+    db.alumnos.find(query, {}, (err, docs)=>{
+      socket.emit('update list', docs);
+    })
+  })
+
 });
 
 app.get('/edit/:_id', (req, res)=>{
@@ -70,12 +80,6 @@ app.get('/edit/:_id', (req, res)=>{
       btnlabel: 'Update'
     });
   })
-});
-
-app.post('/update/:_id', (req, res)=>{
-  db.alumnos.update({_id: db.ObjectId(req.params._id)}, {$set:req.body}, (err, doc)=>{
-    res.redirect('/');
-  });
 });
 
 server.listen(5000, ()=>{

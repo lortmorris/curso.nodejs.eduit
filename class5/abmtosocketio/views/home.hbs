@@ -4,7 +4,7 @@
   {{/each}}
 </ul>
 
-    <table>
+    <table id="listUI">
       <tr>
         <th>CURP</th>
         <th>Nombre</th>
@@ -14,19 +14,5 @@
         <th>Added</th>
         <th>Actions</th>
       </tr>
-      {{#each alumnos}}
-      <tr>
-        <td><a href='/alumno/{{this.curp}}'>{{this.curp}}</a></td>
-        <td>{{this.fname}}</td>
-        <td>{{this.lname}}</td>
-        <td>{{this.dob}}</td>
-        <td>{{this.prom}}</td>
-        <td>{{this.added}}</td>
-        <td>
-          <a href="/edit/{{this._id}}">Edit</a>
-          <button onclick="deleteAlumno('{{this._id}}')">Delete</button>
-
-        </td>
-      </tr>
-      {{/each}}
+      
     </table>
