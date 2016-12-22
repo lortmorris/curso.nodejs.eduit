@@ -1,0 +1,23 @@
+<h1>Alumnos</h1>
+
+
+<table>
+	<tr>
+		<th>ID		|</th>
+		<th>DNI |</th> 
+		<th>First Name |</th>
+		<th>Last Name |</th>
+		<th>Date of birth |</th>
+		<th>Avg</th>
+	</tr>
+	{{#each alumnos}}
+	<tr>
+		<td><a href='/alumnos/{{this._id}}'>{{this._id}}</a>|</td>
+		<td>{{{this.dni}}}</td>
+		<td>{{{this.fname}}}</td>
+		<td>{{{this.lname}}}</td>
+		<td>{{{this.doB}}}</td>
+		<td>{{{this.avg}}}</td>
+	</tr>
+	{{/each}}
+</table>
