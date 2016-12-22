@@ -1,0 +1,32 @@
+<ul>
+  {{#each filterNotes}}
+  <li><a href='/?filterNote={{this}}'>{{this}}</a></li>
+  {{/each}}
+</ul>
+
+    <table>
+      <tr>
+        <th>CURP</th>
+        <th>Nombre</th>
+        <th>Apellido</th>
+        <th>DOB</th>
+        <th>Promedio</th>
+        <th>Added</th>
+        <th>Actions</th>
+      </tr>
+      {{#each alumnos}}
+      <tr>
+        <td><a href='/alumno/{{this.curp}}'>{{this.curp}}</a></td>
+        <td>{{this.fname}}</td>
+        <td>{{this.lname}}</td>
+        <td>{{this.dob}}</td>
+        <td>{{this.prom}}</td>
+        <td>{{this.added}}</td>
+        <td>
+          <a href="/edit/{{this._id}}">Edit</a>
+          <button onclick="deleteAlumno('{{this._id}}')">Delete</button>
+
+        </td>
+      </tr>
+      {{/each}}
+    </table>

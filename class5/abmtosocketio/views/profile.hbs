@@ -1,0 +1,19 @@
+
+{{#if alumno}}
+<h1>{{alumno.fname}} {{alumno.lname}}</h1>
+<p>
+  CURP: {{alumno.curp}}
+</p>
+<p>
+  DOB: {{alumno.dob}}
+</p>
+<p>
+  Added: {{alumno.added}}
+</p>
+
+<p>
+  Promedio: {{alumno.promedio}}
+</p>
+{{else}}
+<h1>Alumno no encontrad </h>
+{{/if}}
