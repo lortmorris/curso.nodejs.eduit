@@ -6,7 +6,7 @@ const mongojs = require('mongojs');
 const app = express();
 const server = http.createServer(app);
 const fs = require('fs');
-const db = mongojs('mongodb://localhost/mexico', ['alumnos']);
+const db = mongojs('mongodb://localhost/cursodb', ['alumnos']);
 let counter = 0;
 app.engine('.hbs', exphbs({extname: '.hbs', defaultLayout: 'default'}) );
 app.set('view engine', '.hbs');
@@ -17,14 +17,16 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get('/counter', (req, res)=> res.end('counter: '+counter++));
 app.get('/datetime', (req, res)=> res.end(new Date().toString));
 app.get('/', (req, res)=> {
-  db.alumnos.find({}, {}, (err, docs)=>{
+  db.alumnos.find({}, {})
+  .limit(1000)
+  .toArray( (err, docs)=>{
     res.render('home', {alumnos: docs});
   });
 
 });
 
-app.get('/alumno/:curp', (req, res)=>{
-  db.alumnos.findOne( {curp: req.params.curp}, {}, (err, doc)=>{
+app.get('/alumno/:_id', (req, res)=>{
+  db.alumnos.findOne( {_id: db.ObjectId(req.params._id)}, {}, (err, doc)=>{
     res.render('profile', {alumno:  doc});
   });
 });
