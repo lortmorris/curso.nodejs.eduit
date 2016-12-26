@@ -1,0 +1,9 @@
+
+<form method="post" action="/{{action}}/{{alumno._id}}">
+  <p>CURP: <input class="fieldForm" type="text" name="curp" value="{{alumno.curp}}"/></p>
+  <p>Nombre: <input class="fieldForm" type="text" name="fname" value="{{alumno.fname}}" /></p>
+  <p>Apellido: <input class="fieldForm" type="text" name="lname" value="{{alumno.lname}}" /></p>
+  <p>DoB: <input class="fieldForm" type="text" name="dob" value="{{alumno.dob}}"/></p>
+  <p>Promedio: <input class="fieldForm"  type="text" name="prom" value="{{alumno.prom}}" /></p>
+  <p><input type="submit" value="{{btnlabel}}" /></p>
+</form>

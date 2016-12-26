@@ -32,7 +32,8 @@ app.get('/alumno/:_id', (req, res)=>{
 });
 
 app.get('/add', (req, res)=>{
-  res.render('add');
+  res.render('add', {action:'save',
+  btnlabel: 'Add+'});
 });
 
 app.post('/save', (req, res)=>{
@@ -50,6 +51,22 @@ app.get('/filter', (req, res)=>{
 
 app.get('/delete', (req, res)=>{
   db.alumnos.remove({_id: db.ObjectId(req.query._id)}, (err, doc)=>{
+    res.redirect('/');
+  });
+});
+
+app.get('/edit/:_id', (req, res)=>{
+  db.alumnos.findOne({_id: db.ObjectId(req.params._id)}, (err, doc)=>{
+    console.log('alumno: ', doc)
+    res.render('add', {alumno: doc,
+      action:'update',
+      btnlabel: 'Update'
+    });
+  })
+});
+
+app.post('/update/:_id', (req, res)=>{
+  db.alumnos.update({_id: db.ObjectId(req.params._id)}, {$set:req.body}, (err, doc)=>{
     res.redirect('/');
   });
 });
