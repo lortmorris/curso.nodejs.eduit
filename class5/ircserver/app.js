@@ -11,10 +11,11 @@ const channelsList = {};
 
 const responseToChannel=(channel, msg)=>{
   if(typeof channelsList[channel]==="undefined") return Promise.reject('channel not exists');
-  response(msg, Object.keys(channelsList[channel].users));
+  return response(msg, Object.keys(channelsList[channel].users));
 }
 const response =(txt, users=[])=>{
-  users.forEach(u => usersList[u].socket.emit('msg', txt))
+  users.forEach(u => usersList[u].socket.emit('msg', txt));
+  return Promise.resolve();
 };
 
 
