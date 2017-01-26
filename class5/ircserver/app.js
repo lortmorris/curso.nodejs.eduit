@@ -10,7 +10,7 @@ const usersList = {};
 const channelsList = {};
 
 const responseToChannel=(channel, msg)=>{
-  if(!channelsList[channel]) return Promise.reject('channel not exists');
+  if(typeof channelsList[channel]==="undefined") return Promise.reject('channel not exists');
   response(msg, Object.keys(channelsList[channel].users));
 }
 const response =(txt, users=[])=>{

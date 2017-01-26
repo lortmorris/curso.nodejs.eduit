@@ -9,7 +9,7 @@ module.exports =params=>{
           }
       }
       params.channelsList[data[0]].users[id] = params.usersList[id];
-      params.responseToChannel(`/joined ${params.usersList[id].nick}`,data[0] )
+      params.responseToChannel(data[0], `/joined ${params.usersList[id].nick}` )
       .then(()=>resolve(`/join ${data[0]} ok`))
       .catch((err)=> reject(err))
 
