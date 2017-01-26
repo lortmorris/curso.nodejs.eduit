@@ -1,0 +1,27 @@
+  <h1>Alumnos</h1>
+  <h3>{{datetime}}</h3>
+  <h4>Alumnos: {{total}}</h4>
+  <table>
+    <tr>
+      <th>fname</th>
+      <th>lname</th>
+      <th>dni</th>
+      <th>avg</th>
+      <th>type</th>
+      <th>created</th>
+      <th>update</th>
+      <th>actions</th>
+    </tr>
+    {{#each alumnos}}
+    <tr>
+      <td>{{this.fname}}</td>
+      <td>{{this.lname}}</td>
+      <td>{{this.dni}}</td>
+      <td>{{this.avg}}</td>
+      <td>{{this.type}}</td>
+      <td>{{this.added}}</td>
+      <td>{{this.lastUpdate}}</td>
+      <td><a href="/delete/{{this._id}}">[ X ]</a></td>
+    </tr>
+    {{/each}}
+  </table>
