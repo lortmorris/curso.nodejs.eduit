@@ -4,12 +4,16 @@ const urlParams = require('./mws/query');
 const controllers = require('./controllers');
 const Application = {
   version: '0.1',
-  controllers: controllers
+  controllers: controllers,
+  users: []
 };
-
 const virtualDirs = require('./routes')(Application);
 
 let counter = 0;
+
+fs.readFile('./users', (err, data)=>{
+  err ? '' : Application.users = JSON.parse(data);
+})
 
 const getFile = (req, res, next)=>
 fs.readFile('./public' + req.url, (err, data) =>
@@ -26,6 +30,7 @@ const show404 = (req, res)=> res.end('404');
 
 const server = http.createServer((req, res) => {
   urlParams(req, res);
+  req.users  = Application.users;
   req.url = req.url === '/' ? '/index.html' : req.url;
   getFile(req, res, ()=> isVirtualDir(req, res, show404));
 });
