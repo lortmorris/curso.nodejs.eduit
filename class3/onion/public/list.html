@@ -1,0 +1,20 @@
+<html>
+<head>
+  <title>Users</title>
+</head>
+<body>
+  <ul id='list'></ul>
+  <script type="text/javascript">
+  fetch('http://localhost:5000/api/users')
+  .then(response=> response.json())
+  .then(data => {
+    document.getElementById('list').innerHTML = '';
+    data.forEach(item=> {
+      let el = document.createElement('li');
+      document.getElementById('list').appendChild(el);
+      el.innerHTML = `<span>${item.name}</span> | <span>${item.dni}</span> | <span>${item.course}</span>`;
+    });
+  });
+  </script>
+</body>
+</html>
