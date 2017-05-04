@@ -9,7 +9,6 @@ const Application = {
 };
 const virtualDirs = require('./routes')(Application);
 
-let counter = 0;
 
 fs.readFile('./users', (err, data)=>{
   err ? '' : Application.users = JSON.parse(data);
@@ -31,8 +30,10 @@ const show404 = (req, res)=> res.end('404');
 const server = http.createServer((req, res) => {
   urlParams(req, res);
   req.users  = Application.users;
-  req.url = req.url === '/' ? '/index.html' : req.url;
-  getFile(req, res, ()=> isVirtualDir(req, res, show404));
+  //req.url = req.url === '/' ? '/index.html' : req.url;
+  //getFile(req, res, ()=> isVirtualDir(req, res, show404));
+
+  res.end('hola')
 });
 
 server.listen(5000);

@@ -1,3 +1,5 @@
+let counter = 0;
+
 const virtualDirs = {
   'GET/counter': (req, res)=> res.end('' + counter++),
   'GET/today': (req, res)=> res.end(new Date().toString()),
