@@ -1,0 +1,28 @@
+
+<form method="get" action="/">
+  <input type="text" name="param" placeholder="Query? " />
+  <select name="qtype">
+    <option value="vendor">Vendor</option>
+    <option value="passport">Passport</option>
+  </select>
+  <input type="submit" value="Search" />
+</form>
+<table>
+
+  <tr>
+    <th>Date</th>
+    <th>Fname</th>
+    <th>Lname</th>
+    <th>Passport</th>
+    <th>Price</th>
+  </tr>
+{{#each sales}}
+  <tr>
+    <td>{{this.date}}</td>
+    <th>{{this.customer.fname}}</th>
+    <th>{{this.customer.lname}}</th>
+    <th>{{this.customer.passport}}</th>
+    <th>{{this.price}}</th>
+  </tr>
+{{/each}}
+</table>
