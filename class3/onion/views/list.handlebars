@@ -1,0 +1,14 @@
+<table>
+  <tr>
+    <th>Name</th>
+    <th>DNI</th>
+    <th>Course</th>
+  </tr>
+  {{#each users}}
+    <tr>
+      <td>{{this.name}}</td>
+      <td>{{this.dni}}</td>
+      <td>{{this.course}}</td>
+    </tr>
+  {{/each}}
+</table>
