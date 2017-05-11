@@ -1,0 +1,20 @@
+
+<form method="get" action="/vendors">
+  <input type="text" name="param" placeholder="Query? " />
+  <input type="submit" value="Search" />
+</form>
+
+<table>
+  <tr>
+    <th>Fname</th>
+    <th>Lname</th>
+    <th>Age</th>
+  </tr>
+{{#each vendors}}
+  <tr>
+    <th>{{this.fname}}</th>
+    <th>{{this.lname}}</th>
+    <th>{{this.age}}</th>
+  </tr>
+{{/each}}
+</table>

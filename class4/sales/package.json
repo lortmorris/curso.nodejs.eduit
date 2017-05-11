@@ -1,0 +1,26 @@
+{
+  "name": "sales",
+  "version": "1.0.0",
+  "description": "sales abm and stats",
+  "main": "app.js ",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "expressjs",
+    "mongodb",
+    "mongojs",
+    "sales",
+    "stats"
+  ],
+  "author": "Cesar Casas <cesarcasas@bsdsolutions.com.ar> (https://ar.linkedin.com/in/cesarcasas)",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "compress": "^0.99.0",
+    "express": "^4.15.2",
+    "express-handlebars": "^3.0.0",
+    "helmet": "^3.6.0",
+    "mongojs": "^2.4.0"
+  }
+}
