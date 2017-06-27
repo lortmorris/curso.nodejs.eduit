@@ -25,9 +25,8 @@ app.get('/', (req, res)=>{
       break;
     }
   }
-  db.sales.find(query, {}).sort({_id: 1}).limit(50, (err, sales)=>{
-    res.render('home', {sales});
-  });
+  db.sales.find(query, {}).sort({_id: 1})
+    .limit(50, (err, sales)=> res.render('home', {sales}) });
 
 });
 
