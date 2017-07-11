@@ -1,0 +1,16 @@
+{
+  "name": "tpm",
+  "version": "1.0.0",
+  "description": "this is class 3 example ",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "express",
+    "handlebars",
+    "npm"
+  ],
+  "author": "Cesar Casas <cesarcasas@bsdsolutions.com.ar> (https://ar.linkedin.com/in/cesarcasas)",
+  "license": "ISC"
+}
