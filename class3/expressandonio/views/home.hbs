@@ -1,0 +1,22 @@
+
+<h1>Alumnos system v1.0</h1>
+<ul>
+  <li><a href="/">List</a></li>
+  <li><a href="/add">Add+</a></li>
+</ul>
+
+<h2>Users</h2>
+<table>
+  <tr>
+    <th>Fname</th>
+    <th>Age</th>
+    <th>DNI</th>
+  </tr>
+  {{#each usersData}}
+  <tr>
+    <td>{{this.fname}}</td>
+    <td>{{this.age}}</td>
+    <td>{{this.dni}}</td>
+  </tr>
+  {{/each}}
+</table>
