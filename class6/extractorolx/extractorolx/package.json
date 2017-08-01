@@ -1,0 +1,21 @@
+{
+  "name": "ml2",
+  "version": "1.0.0",
+  "description": "ml scrap",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "ml"
+  ],
+  "author": "Cesar Casas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.2",
+    "browserwithphantom": "^2.0.55",
+    "config": "^1.26.1",
+    "express": "^4.15.3",
+    "mongojs": "^2.4.0"
+  }
+}
