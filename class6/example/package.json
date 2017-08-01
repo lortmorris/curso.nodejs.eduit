@@ -1,0 +1,19 @@
+{
+  "name": "class6",
+  "version": "1.0.0",
+  "description": "handlebars example",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Cesar Casas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "browserwithphantom": "^2.0.54",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "mongojs": "^2.4.0",
+    "socket.io": "^1.5.0"
+  }
+}

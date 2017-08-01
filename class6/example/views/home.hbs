@@ -1,0 +1,19 @@
+<h2>Dejá tu website</h2>
+
+<form method="post" action="/">
+	Nombre: <input type="text" name="url" placeholder="inserte su url" />
+
+	Nombre: <input type="text" name="name" placeholder="" />
+	<input type="submit" value="Add+" />
+</form>
+
+
+<ul id="sites">
+	{{#each sites}}
+	<li>
+		<span>{{this.url}}</span>
+		<img src="/mytest/{{this.filename}}" />
+		<span>{{this.name}}</span>
+	</li>		
+	{{/each}}
+</ul>

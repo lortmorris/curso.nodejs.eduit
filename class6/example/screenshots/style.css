@@ -1,0 +1,4 @@
+#sites{ list-style: none; }
+#sites li{float: left; width: 150px; height: 150px;}
+#sites li span{display: block; }
+#sites li img{display: block; width: 120px; height: 100px}

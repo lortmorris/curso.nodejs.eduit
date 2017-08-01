@@ -1,0 +1,15 @@
+{
+  "name": "olxexample",
+  "version": "1.0.0",
+  "description": "OLX crawler example",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Cesar Casas <cesarcasas@bsdsolutions.com.ar> (https://ar.linkedin.com/in/cesarcasas)",
+  "license": "ISC",
+  "dependencies": {
+    "browserwithphantom": "^2.0.55",
+    "mongojs": "^2.4.0"
+  }
+}
