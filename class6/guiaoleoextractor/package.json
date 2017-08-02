@@ -1,0 +1,24 @@
+{
+  "name": "guiaoleoextractor",
+  "version": "1.0.0",
+  "description": "Guia Oleo Extractor",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [
+    "guia",
+    "oleo",
+    "extractor",
+    "crawler",
+    "scrapping",
+    "phantomjs"
+  ],
+  "author": "Cesar Casas <cesarcasas@bsdsolutions.com.ar> (https://ar.linkedin.com/in/cesarcasas)",
+  "license": "ISC",
+  "dependencies": {
+    "browserwithphantom": "^2.0.55",
+    "config": "^1.26.1",
+    "mongojs": "^2.4.0"
+  }
+}

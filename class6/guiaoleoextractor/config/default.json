@@ -1,0 +1,7 @@
+{
+  "db":{
+    "host": "mongodb://127.0.0.1",
+    "db": "guiaoleo",
+    "collections": ["categories", "restaurantes"]
+  }
+}

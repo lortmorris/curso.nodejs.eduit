@@ -1,7 +1,7 @@
 {
   "db":{
-    "host":"mongodb://127.0.0.1",
-    "db":"ml",
+    "host": "mongodb://127.0.0.1",
+    "db": "olx",
     "collections": ["categories", "products"]
   }
 }

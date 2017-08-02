@@ -50,16 +50,17 @@ const scrap = (docs) => {
         }); //end evaluate
       })
       .then((items)=>{
-        console.log(url, items);
         if(items){
           items.forEach(item => save(item, categoryId) );
         }
         return Promise.resolve();
       })
       .then(()=>{
+        console.info('getting next category')
         scrap(docs);
       })
       .catch((err)=>{
+        console.error('Error in scrap');
         scrap(docs);
         //throw err;
       })
