@@ -4,10 +4,10 @@ const mongojs = require('mongojs');
 const db = mongojs(`${config.get('db').host}/${config.get('db').db}`, config.get('db').collections);
 const mybrowser = new browser("mytest", {ttl: 60});
 
-const save = (item, categoryId) =>{
+const save = (item, category) =>{
   db.products.findOne({olxid: item.olxid},{}, (err, doc)=>{
     if(!doc){
-      db.products.insert(Object.assign({}, item, {categoryId: categoryId}));
+      db.products.insert(Object.assign({}, item, {category}));
     }
   });
 }
@@ -51,7 +51,7 @@ const scrap = (docs) => {
       })
       .then((items)=>{
         if(items){
-          items.forEach(item => save(item, categoryId) );
+          items.forEach(item => save(item, category) );
         }
         return Promise.resolve();
       })
