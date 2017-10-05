@@ -1,0 +1,25 @@
+<h1>Usuarios</h1>
+
+<form method="get" action="/">
+  <input type="text" placeholder="buscar..." name="q" />
+  <input type="submit" value="Search" />
+</form>
+<table>
+  <tr>
+    <th>Fname</th>
+    <th>Lname</th>
+    <th>DNI</th>
+    <th>&nbsp;</th>
+  </tr>
+  {{#each users}}
+  <tr>
+    <td>{{this.fname}}</td>
+    <td>{{this.lname}}</td>
+    <td>{{this.dni}}</td>
+    <td>
+      <a href="/edit/?dni={{this.dni}}" title="Edit">[Edit]</a> | 
+      <a href="/delete/?dni={{this.dni}}" title="Eliminar">[X]</a>
+    </td>
+  </tr>
+  {{/each}}
+</table>

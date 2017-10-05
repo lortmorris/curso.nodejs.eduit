@@ -1,0 +1,15 @@
+<form method="get" action="/save">
+  <p>fname: <input type="text" value="{{user.fname}}" name="fname" placeholder="First name" /></p>
+  <p>lname: <input type="text" value="{{user.lname}}" name="lname" placeholder="Last name" /></p>
+  <p>dni: <input type="text" value="{{user.dni}}" name="dni" placeholder="dni" /></p>
+  <p>
+    {{#if edit}}
+      <input type="hidden" name="act" value="edit" />
+      <input type="hidden" name="olddni" value="{{user.dni}}" />
+      <input type="submit" value="Update" />
+    {{else}}
+      <input type="submit" value="Add+" />
+    {{/if}}
+
+  </p>
+</form>
