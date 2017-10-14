@@ -1,0 +1,31 @@
+<h1>Usuarios</h1>
+
+<form method="get" action="/">
+  <input type="text" placeholder="buscar..." name="q" />
+  <input type="submit" value="Search" />
+</form>
+<table>
+  <tr>
+    <th>Added</th>
+    <th>Update</th>
+    <th>Fname</th>
+    <th>Lname</th>
+    <th>DNI</th>
+    <th>Criterial</th>
+    <th>&nbsp;</th>
+  </tr>
+  {{#each users}}
+  <tr>
+    <td>{{this.added}}</td>
+    <td>{{this.updated}}</td>
+    <td>{{this.fname}}</td>
+    <td>{{this.lname}}</td>
+    <td>{{this.dni}}</td>
+    <td>{{this.criterial}}</td>
+    <td>
+      <a href="/edit/?_id={{this._id}}" title="Edit">[Edit]</a> |
+      <a href="/delete/?_id={{this._id}}" title="Eliminar">[X]</a>
+    </td>
+  </tr>
+  {{/each}}
+</table>

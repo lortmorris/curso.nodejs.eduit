@@ -1,0 +1,16 @@
+{
+  "name": "09-2017",
+  "version": "1.0.0",
+  "description": "express example",
+  "main": "app.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "Cesar Casas <cesarcasas@bsdsolutions.com.ar> (https://ar.linkedin.com/in/cesarcasas)",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.1",
+    "express-handlebars": "^3.0.0",
+    "mongojs": "^2.4.1"
+  }
+}
