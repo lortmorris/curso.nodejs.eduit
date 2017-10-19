@@ -1,0 +1,40 @@
+<div class="content">
+  <div class="row2">
+  <h1>Chat v1.0</h1>
+  <h2>Register</h2>
+
+
+{{#if error}}
+<div class="alert alert-danger" role="alert">
+  <strong>Oh snap!</strong> Nickname or E-Mail aready exists.
+</div>
+{{/if}}
+  <form method="post" action="/register">
+    <div class="form-group">
+      <label for="email">E-Mail</label>
+      <input type="email" class="form-control" id="email" name="email" placeholder="Your E-Mail" required />
+    </div>
+    <div class="form-group">
+      <label for="nickname">Nickname</label>
+      <input type="text" class="form-control" id="nickname" name="nickname" placeholder="Your Nickname" required />
+    </div>
+
+    <div class="form-group">
+      <label for="fname">First Name</label>
+      <input type="text" class="form-control" id="fname" name="fname" placeholder="Your First Name" required />
+    </div>
+
+
+    <div class="form-group">
+      <label for="lname">Nickname</label>
+      <input type="text" class="form-control" id="lname" name="lname" placeholder="Your Last Name" required />
+    </div>
+
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required />
+    </div>
+    <button type="submit" class="btn btn-default">Login</button>
+  </form>
+  </div>
+</div>
