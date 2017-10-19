@@ -1,3 +1,5 @@
+const debug = require('debug')('chat:mws:login');
+
 const login = ({ db }) => ({
     post: (req, res) => {
       debug('POST /login: ', req.body);

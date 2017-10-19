@@ -1,3 +1,4 @@
+const debug = require('debug')('chat:mws:home');
 
 const home = application => ({
   get: (req, res) => {

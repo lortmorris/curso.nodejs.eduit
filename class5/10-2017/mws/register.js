@@ -1,3 +1,4 @@
+const debug = require('debug')('chat:mws:register');
 
 const register = ({ db }) => ({
   get: (req, res) => {

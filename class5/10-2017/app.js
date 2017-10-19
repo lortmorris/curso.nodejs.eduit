@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const db = mongojs('mongodb://127.0.0.1/chat', ['users', 'history']);
 const app = express();
 const server = http.createServer(app);
+const io = require('socket.io')(server);
 const MWS = require('./mws');
 app.set('trust proxy', 1);
 
@@ -39,3 +40,16 @@ app.get('/chat', mws.chat.get);
 app.post('/login', mws.login.post);
 
 server.listen(5000, () => console.info('ready *:5000'));
+
+
+io.on('connection', (socket) => {
+  console.log('a user connected: ', socket);
+  socket.on('disconnect', () => {
+    console.log('user disconnected: ', socket.id);
+  });
+
+  socket.on('chat message', (msg) => {
+    io.emit('chat message', msg);
+  });
+
+});
