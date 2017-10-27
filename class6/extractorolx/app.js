@@ -15,10 +15,16 @@ app.get('/categories', (req, res)=> {
 
 
 app.get('/products', (req, res)=> {
+  const query = {};
 
-  let query = {};
-  if(req.query.search) query.title = new RegExp(req.query.search);
-  console.log(query);
+  if (req.query.search) query.title = new RegExp(req.query.search);
+  if (req.query.category) {
+    query['category.text'] = new RegExp(req.query.category, 'i');
+  }
+
+  if (req.query.categoryid) query['category._id'] = db.ObjectId(req.query.categoryid);
+
+  console.info('q: ', query);
   db.products.find(query, {}, (err, docs)=> res.json(docs));
 });
 

@@ -14,7 +14,7 @@ const save = (item) =>{
 
 const scrap = (page) => {
   const currentPage = page + 1;
-  const url = `http://www.guiaoleo.com.ar/guia?page=${currentPage}&queryString=&minComments=0`
+  const url = `https://www.guiaoleo.com.ar/guia?page=${currentPage}&queryString=&minComments=0`
 
   mybrowser.ready()
       .then(()=>{
@@ -32,7 +32,6 @@ const scrap = (page) => {
         var data = document.querySelectorAll('div.col-xs-12.col-md-4');
         for(var x=0; x<data.length; x++){
           var r = data[x];
-          console.log('R es: ', r);
           var categories = r.querySelector('h3').innerText;
           var address = r.dataset.address.split(' ');
           var link = r.dataset.slug.split('-');
@@ -69,4 +68,6 @@ const scrap = (page) => {
       })
 };
 
-scrap(0);
+let page = 0;
+if (process.argv.length === 3) page = parseInt(process.argv[2]);
+scrap(page);
